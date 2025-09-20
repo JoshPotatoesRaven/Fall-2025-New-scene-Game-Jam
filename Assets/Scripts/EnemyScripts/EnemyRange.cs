@@ -6,7 +6,10 @@ public class EnemyRange : EnemyBase
 {
     public GameObject bullet;
 
-    new void Start()
+    // Add a lifetime field if needed
+    public float lifetime = 2f;
+
+    new protected void Start()
     {
         base.Start();
     }
@@ -22,12 +25,19 @@ public class EnemyRange : EnemyBase
         yield return new WaitForSeconds(0.2f);
         Vector2 dir = ((Vector2)(player.transform.position - transform.position)).normalized;
         GameObject bulletInstance = Instantiate(bullet, transform.position, Quaternion.identity);
-        bulletInstance.range = range;
-        bulletInstance.speed = speed;
-        bulletInstance.damage = damage;
-        bulletInstance.lifetime = lifetime;
-        bulletInstance.direction = dir;
-        bulletInstance.OnTriggerEnter += OnBulletTriggerEnter;
+
+        // Get BulletScript component and set its properties
+        var bulletScript = bulletInstance.GetComponent<BulletScript>();
+        if (bulletScript != null)
+        {
+            bulletScript.range = range;
+            bulletScript.speed = speed;
+            bulletScript.damage = damage;
+            bulletScript.lifetime = lifetime;
+            bulletScript.direction = dir;
+            bulletScript.OnTriggerEnter += OnBulletTriggerEnter;
+        }
+
         isAttacking = false;
     }
 
@@ -39,14 +49,22 @@ public class EnemyRange : EnemyBase
         }
         else if (other.CompareTag("Wall"))
         {
-            Vector2 normal = other.GetContact(0).normal;
-            Vector2 reflectedDir = Vector2.Reflect(bulletInstance.transform.right, normal);
-            GameObject bulletInstance = Instantiate(bullet, transform.position, Quaternion.identity);
-            bulletInstance.range = range;
-            bulletInstance.speed = speed;
-            bulletInstance.damage = damage;
-            bulletInstance.lifetime = lifetime;
-            bulletInstance.direction = reflectedDir;
+            // Use collision normal from BulletScript if available, otherwise default to Vector2.right
+            Vector2 normal = Vector2.right;
+            BulletScript bulletScript = other.GetComponent<BulletScript>();
+
+            Vector2 reflectedDir = Vector2.Reflect(other.transform.right, normal);
+            GameObject newBulletInstance = Instantiate(bullet, transform.position, Quaternion.identity);
+            var newBulletScript = newBulletInstance.GetComponent<BulletScript>();
+            if (newBulletScript != null)
+            {
+                newBulletScript.range = range;
+                newBulletScript.speed = speed;
+                newBulletScript.damage = damage;
+                newBulletScript.lifetime = lifetime;
+                newBulletScript.direction = reflectedDir;
+                newBulletScript.OnTriggerEnter += OnBulletTriggerEnter;
+            }
         }
     }
 }
