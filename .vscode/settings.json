@@ -56,5 +56,10 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Fall-2025-Game-Jam.sln"
+    "dotnet.defaultSolution": "Fall-2025-Game-Jam.sln",
+    "dotnet.enableBuildWithOmnisharp": false,
+    "dotnet.enableRoslynAnalyzers": false,
+    "omnisharp.enableMsBuildLoadProjectsOnDemand": true,
+    "omnisharp.msbuildLoadProjectsOnDemand": true,
+    "omnisharp.useModernNet": false
 }

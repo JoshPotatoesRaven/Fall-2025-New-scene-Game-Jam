@@ -6,7 +6,7 @@ using UnityEngine;
 public class BreakableBox : MonoBehaviour
 {
     public float collisionSpeedThreshold = 3.0f;
-
+    public int health = 1;
     public GameObject box;
     Animator animator;
     public String animationStateName;
@@ -23,12 +23,6 @@ public class BreakableBox : MonoBehaviour
         breakText = transform.GetChild(breakTextIndex).gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log(collision.relativeVelocity.magnitude);
@@ -37,15 +31,25 @@ public class BreakableBox : MonoBehaviour
             GameObject otherObject = collision.collider.gameObject;
             if (otherObject.CompareTag("Egg"))
             {
-                //Break self and show text.
-                BoxCollider2D selfCollider = gameObject.GetComponent<BoxCollider2D>();
-                selfCollider.enabled = false;
-                animator.speed = 1f;
-
-                breakText.SetActive(true);
-                        
                 Destroy(otherObject);
+
+                health -= 1;
+                if (health <= 0) {
+                    Break();
+                }
             }
         }
+    }
+
+    void Break()
+    {
+        
+        //Break self and show text.
+        BoxCollider2D selfCollider = gameObject.GetComponent<BoxCollider2D>();
+        selfCollider.enabled = false;
+        animator.speed = 1f;
+
+        breakText.SetActive(true);
+        
     }
 }

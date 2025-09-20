@@ -10,7 +10,7 @@ public class HealthManager : MonoBehaviour
 
     public HealthBar healthBar;
 
-    public GameObject lastCheckpoint;
+    public Transform lastCheckpoint;
 
     GameObject player;
     // Start is called before the first frame update
@@ -33,13 +33,14 @@ public class HealthManager : MonoBehaviour
         }
     }
 
+
     void RestartLevel()
     {
         if (lastCheckpoint == null) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else {
-
+            //Move to last checkpoint
         }
         
     }

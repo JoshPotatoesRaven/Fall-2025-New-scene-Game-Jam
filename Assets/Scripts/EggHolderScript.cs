@@ -21,6 +21,8 @@ public class EggHolderScript : MonoBehaviour
     private List<Transform> followers = new List<Transform>();
     private float recordTimer = 0f;
 
+
+
     void Start()
     {
         // Pre-fill the history with starting position
@@ -58,6 +60,7 @@ public class EggHolderScript : MonoBehaviour
     {
         GameObject newItem = Instantiate(itemPrefab, transform.position, Quaternion.identity);
         followers.Add(newItem.transform);
+
     }
 
     public System.Collections.IEnumerator PickupCooldownRoutine()
@@ -67,7 +70,7 @@ public class EggHolderScript : MonoBehaviour
         canPickup = true;
     }
 
-    
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (!canPickup)
