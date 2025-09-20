@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar3Piece : MonoBehaviour
+public class HealthBar : MonoBehaviour
 {
     public RectTransform leftCap;
     public RectTransform middleFill;
