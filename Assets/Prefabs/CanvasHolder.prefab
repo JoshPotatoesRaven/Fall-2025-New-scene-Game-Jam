@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 5781914321443608203}
   - component: {fileID: 3072753856032666007}
   - component: {fileID: 3237201870697432427}
-  - component: {fileID: 2499387330340269078}
+  - component: {fileID: 878585785269299150}
   m_Layer: 5
   m_Name: Yolk_timer
   m_TagString: Untagged
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2072087940, guid: 3be845bae06bd4a41b8c6f800df69e3c, type: 3}
+  m_Sprite: {fileID: -1500127244, guid: 3be845bae06bd4a41b8c6f800df69e3c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &2499387330340269078
+--- !u!95 &878585785269299150
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ Animator:
   m_GameObject: {fileID: 1929340647926135136}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7819754ea6c637e40962d81cbe4278fb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 71ee759656b613043bb341c70b54d1e8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -225,7 +225,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6851666557483789998}
   - {fileID: 5781914321443608203}
@@ -234,7 +234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 120}
+  m_AnchoredPosition: {x: 4, y: 166}
   m_SizeDelta: {x: 600.9598, y: 116.792}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2573192700147281447
