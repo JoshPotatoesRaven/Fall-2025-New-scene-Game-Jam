@@ -76,6 +76,15 @@ public class EnemyBase : MonoBehaviour
         rb.velocity = (player.transform.position - transform.position).normalized * speed;   
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Make sure attack hitbox has this tag
+        if (other.CompareTag("PlayerAttack"))
+        {
+            TakeDamage(1);
+        }
+    }
+
     protected virtual void AttackPlayer()
     {
 
