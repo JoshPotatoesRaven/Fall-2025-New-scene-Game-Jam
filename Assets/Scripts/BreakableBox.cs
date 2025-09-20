@@ -11,13 +11,16 @@ public class BreakableBox : MonoBehaviour
     Animator animator;
     public String animationStateName;
 
-    public GameObject breakText;
+    public int breakTextIndex;
+    GameObject breakText;
+    public GameObject textBackground;
     // Start is called before the first frame update
     void Start()
     {
         animator = box.GetComponent<Animator>();
         animator.Play(animationStateName, 0, 0f);
         animator.speed = 0f;
+        breakText = transform.GetChild(breakTextIndex).gameObject;
     }
 
     // Update is called once per frame

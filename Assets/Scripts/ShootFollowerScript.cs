@@ -33,7 +33,7 @@ public class ShootFollowerScript : MonoBehaviour
         if (lastFollower == null) return;
 
         // 2. Create a projectile at that position
-        GameObject proj = Instantiate(projectilePrefab, lastFollower.position, transform.rotation);
+        GameObject proj = Instantiate(projectilePrefab, transform.position, transform.rotation);
 
         // 3. Apply force in the direction the player is facing
         Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
