@@ -56,13 +56,13 @@ public class EnemyBase : MonoBehaviour
     void LateUpdate()
     {
         Vector2 direction = (player.transform.position - transform.position).normalized;
-        transform.right = direction; 
+        transform.right = direction;
     }
 
     private bool CanHitPlayer()
     {
         if (player == null || isAttacking) return false;
-        Vector2 dir = ((Vector2)(player.transform.position - transform.position)).normalized; 
+        Vector2 dir = ((Vector2)(player.transform.position - transform.position)).normalized;
         int layerMask = LayerMask.GetMask("Default", "Player");
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, detectRange, layerMask);
 
@@ -73,7 +73,7 @@ public class EnemyBase : MonoBehaviour
     private void ChasePlayer()
     {
         if (player == null) return;
-        rb.velocity = (player.transform.position - transform.position).normalized * speed;   
+        rb.velocity = (player.transform.position - transform.position).normalized * speed;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -122,5 +122,16 @@ public class EnemyBase : MonoBehaviour
         Instantiate(SpawnEgg);
         Destroy(gameObject);
         OnDeath?.Invoke();
+    }
+    
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        GameObject otherObject = collision.collider.gameObject;
+        if (otherObject.CompareTag("Egg"))
+        {
+            TakeDamage(1);
+        }
+        
     }
 }
