@@ -377,6 +377,8 @@ GameObject:
   - component: {fileID: 251166324779174204}
   - component: {fileID: 215570477721238655}
   - component: {fileID: 3089423894344329959}
+  - component: {fileID: 7140400359341035492}
+  - component: {fileID: 2476335671579682717}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -449,6 +451,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7.5
+--- !u!114 &7140400359341035492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4503315301480290490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 635adcbfbd0971643a14deec9d4ba102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trailLength: 3
+  recordInterval: 0.1
+  followSpeed: 10
+  spacing: 2
+  itemPrefab: {fileID: 0}
+--- !u!114 &2476335671579682717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4503315301480290490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f6c06afc86133044b98c00582d00c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trailingItems: {fileID: 7140400359341035492}
+  projectilePrefab: {fileID: 5469977317411935923, guid: 0ae8f731ab4f86146b5135af3793c0a0, type: 3}
+  shootForce: 10
 --- !u!1 &4803180912082914651
 GameObject:
   m_ObjectHideFlags: 0
