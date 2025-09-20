@@ -60,38 +60,21 @@ public class EggHolderScript : MonoBehaviour
         followers.Add(newItem.transform);
     }
 
-    public void RemoveFollower()
-    {
-        if (followers.Count > 0)
-        {
-            // Get the last follower in the list
-            Transform lastFollower = followers[followers.Count - 1];
-
-            // Remove it from the list
-            followers.RemoveAt(followers.Count - 1);
-
-            // Destroy the GameObject so it disappears
-            if (lastFollower != null)
-                Destroy(lastFollower.gameObject);
-        }
-
-        // Start cooldown
-        StartCoroutine(PickupCooldownRoutine());
-    }
-
-    private System.Collections.IEnumerator PickupCooldownRoutine()
+    public System.Collections.IEnumerator PickupCooldownRoutine()
     {
         canPickup = false;
         yield return new WaitForSeconds(pickupCooldown);
         canPickup = true;
     }
+
+    
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (!canPickup)
         {
             return;
         }
-        
+
         if (collision.collider.CompareTag("Egg"))
         {
             // Add a new follower

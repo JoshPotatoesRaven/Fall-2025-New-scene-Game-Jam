@@ -8,6 +8,8 @@ public class EnemyBase : MonoBehaviour
     public GameObject player;
     public Rigidbody2D rb;
 
+    public GameObject SpawnEgg;
+
     [Header("Stats")]
     public int detectRange;
     public int attackRange;
@@ -108,6 +110,7 @@ public class EnemyBase : MonoBehaviour
     }
     public void Die()
     {
+        Instantiate(SpawnEgg);
         Destroy(gameObject);
         OnDeath?.Invoke();
     }

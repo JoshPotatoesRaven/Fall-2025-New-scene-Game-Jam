@@ -467,7 +467,8 @@ MonoBehaviour:
   recordInterval: 0.1
   followSpeed: 10
   spacing: 2
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 5424605083656097065, guid: f1ad596ef01757443bdf81d183bafdf4, type: 3}
+  pickupCooldown: 0.2
 --- !u!114 &2476335671579682717
 MonoBehaviour:
   m_ObjectHideFlags: 0

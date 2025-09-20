@@ -23,6 +23,11 @@ public class ShootFollowerScript : MonoBehaviour
         if (trailingItems == null || trailingItems.FollowerCount == 0)
             return;
 
+
+
+        // Start cooldown
+        StartCoroutine(trailingItems.PickupCooldownRoutine());
+
         // 1. Remove the last follower from the trail
         Transform lastFollower = trailingItems.PopLastFollower();
         if (lastFollower == null) return;
