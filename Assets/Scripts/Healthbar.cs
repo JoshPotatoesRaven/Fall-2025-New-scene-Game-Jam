@@ -1,41 +1,65 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Healthbar : MonoBehaviour
+public class HealthBar3Piece : MonoBehaviour
 {
-
     public RectTransform leftCap;
     public RectTransform middleFill;
     public RectTransform rightCap;
 
+    [Header("Health")]
     public float maxHealth = 100f;
-
-    [SerializeField]
-    private float currentHealth;
+    [Range(0f, 100f)] public float currentHealth = 100f;
 
     private float fullMiddleWidth;
+    private float baseMiddleX;
+    private float baseRightX;
+
     void Start()
     {
-        fullMiddleWidth = middleFill.sizeDelta.x;
+        // Cache the full width at 100% health
+        fullMiddleWidth = middleFill.rect.width;
+
+        // Store the starting local positions (assuming bar is full in Editor)
+        baseMiddleX = middleFill.anchoredPosition.x;
+        baseRightX  = rightCap.anchoredPosition.x;
+
+        // Ensure pivots/anchors are left-based
+        ForceLeftPivot(leftCap);
+        ForceLeftPivot(middleFill);
+        ForceLeftPivot(rightCap);
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateBar();
     }
-    
-     private void UpdateBar()
+
+    void ForceLeftPivot(RectTransform rt)
     {
-        float percent = currentHealth / maxHealth;
+        rt.pivot = new Vector2(0f, rt.pivot.y);
+        rt.anchorMin = new Vector2(0f, rt.anchorMin.y);
+        rt.anchorMax = new Vector2(0f, rt.anchorMax.y);
+    }
 
-        // Resize middle part (shrinks only from the right, because pivot.x = 0)
-        float newWidth = fullMiddleWidth * percent;
-        middleFill.sizeDelta = new Vector2(newWidth, middleFill.sizeDelta.y);
+    void SetWidth(RectTransform rt, float width)
+    {
+        rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.Max(0f, width));
+    }
 
-        // Move right cap to the end of the middle bar
-        float leftCapWidth = leftCap.sizeDelta.x;
-        rightCap.anchoredPosition = new Vector2(leftCapWidth + newWidth, rightCap.anchoredPosition.y);
+    void UpdateBar()
+    {
+        float pct = maxHealth > 0f ? currentHealth / maxHealth : 0f;
+
+        // Resize middle
+        float newMidW = fullMiddleWidth * pct;
+        SetWidth(middleFill, newMidW);
+
+        // Keep middle in its original spot
+        middleFill.anchoredPosition = new Vector2(baseMiddleX, middleFill.anchoredPosition.y);
+
+        // Right cap slides in as health decreases
+        float shift = fullMiddleWidth - newMidW;
+        rightCap.anchoredPosition = new Vector2(baseRightX - shift, rightCap.anchoredPosition.y);
     }
 }
