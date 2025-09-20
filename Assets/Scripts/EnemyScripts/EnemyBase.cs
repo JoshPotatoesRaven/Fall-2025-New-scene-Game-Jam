@@ -74,6 +74,10 @@ public class EnemyBase : MonoBehaviour
     {
         if (player == null) return;
         rb.velocity = (player.transform.position - transform.position).normalized * speed;
+
+        Vector2 direction = (player.transform.position - transform.position).normalized;
+        transform.up = direction;
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -111,7 +115,7 @@ public class EnemyBase : MonoBehaviour
     }
     private IEnumerator FlashRedCoroutine()
     {
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        SpriteRenderer sr = transform.GetChild(0).GetComponent<SpriteRenderer>();
         Color originalColor = sr.color;
         sr.color = Color.red;
         yield return new WaitForSeconds(0.1f);
@@ -119,7 +123,7 @@ public class EnemyBase : MonoBehaviour
     }
     public void Die()
     {
-        Instantiate(SpawnEgg);
+        Instantiate(SpawnEgg, transform.position, Quaternion.identity);
         Destroy(gameObject);
         OnDeath?.Invoke();
     }

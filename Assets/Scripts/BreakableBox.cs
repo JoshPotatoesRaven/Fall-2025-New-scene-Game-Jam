@@ -48,7 +48,6 @@ public class BreakableBox : MonoBehaviour
         BoxCollider2D selfCollider = gameObject.GetComponent<BoxCollider2D>();
         selfCollider.enabled = false;
         animator.speed = 1f;
-
         breakText.SetActive(true);
         
     }

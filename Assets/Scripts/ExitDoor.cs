@@ -20,6 +20,10 @@ public class ExitDoor : MonoBehaviour
 
     private void LoadNextLevel()
     {
+        if (scene == "")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
         SceneManager.LoadScene(scene);
     }
 }
