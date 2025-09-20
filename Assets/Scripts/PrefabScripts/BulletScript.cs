@@ -32,6 +32,7 @@ public class BulletScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("Enemy")) return;
         OnTriggerEnter?.Invoke(other);
         Destroy(gameObject);
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,11 @@ public class EnemyBase : MonoBehaviour
     public Rigidbody2D rb;
 
     [Header("Stats")]
-    public int range;
+    public int detectRange;
+    public int attackRange;
     public int health;
     public int damage;
+    public int points;
     public float speed;
 
     [Header("Attack")]
@@ -20,6 +23,7 @@ public class EnemyBase : MonoBehaviour
     protected bool isStunned = false;
     protected bool isAttacking = false;
 
+    public event Action OnDeath;
 
     protected void Start()
     {
@@ -33,7 +37,6 @@ public class EnemyBase : MonoBehaviour
         {
             return;
         }
-
         if (CanHitPlayer())
         {
             if (Time.time >= _nextAttackTime)
@@ -48,21 +51,30 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+    void LateUpdate()
+    {
+        Vector2 direction = (player.transform.position - transform.position).normalized;
+        transform.right = direction; 
+    }
+
     private bool CanHitPlayer()
     {
         if (player == null || isAttacking) return false;
-        Vector2 dir = ((Vector2)(player.transform.position - transform.position)).normalized;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, range);
+        Vector2 dir = ((Vector2)(player.transform.position - transform.position)).normalized; 
+        int layerMask = LayerMask.GetMask("Default", "Player");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, detectRange, layerMask);
+
+        Debug.Log(hit.collider);
         return hit.collider != null && hit.collider.CompareTag("Player");
     }
 
     private void ChasePlayer()
     {
         if (player == null) return;
-        rb.velocity = (player.transform.position - transform.position).normalized * speed;
+        rb.velocity = (player.transform.position - transform.position).normalized * speed;   
     }
 
-    private void AttackPlayer()
+    protected virtual void AttackPlayer()
     {
 
     }
@@ -70,6 +82,7 @@ public class EnemyBase : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        FlashRed();
         if (health <= 0)
         {
             Die();
@@ -81,8 +94,21 @@ public class EnemyBase : MonoBehaviour
         //player.GetComponent<Player>().TakeDamage(damage);
     }
 
+    protected void FlashRed()
+    {
+        StartCoroutine(FlashRedCoroutine());
+    }
+    private IEnumerator FlashRedCoroutine()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        Color originalColor = sr.color;
+        sr.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sr.color = originalColor;
+    }
     public void Die()
     {
         Destroy(gameObject);
+        OnDeath?.Invoke();
     }
 }

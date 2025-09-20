@@ -8,13 +8,18 @@ public class EnemyRange : EnemyBase
 
     // Add a lifetime field if needed
     public float lifetime = 2f;
+    public float bulletSpeed = 20f;
 
+    public bool doesRichochet = false;
     new protected void Start()
     {
         base.Start();
+        OnDeath += () => StopAllCoroutines();
+
+        detectRange = 40;
     }
 
-    void AttackPlayer()
+    protected override void AttackPlayer()
     {
         isAttacking = true;
         StartCoroutine(StartAttack());
@@ -25,15 +30,15 @@ public class EnemyRange : EnemyBase
         yield return new WaitForSeconds(0.2f);
         Vector2 dir = ((Vector2)(player.transform.position - transform.position)).normalized;
         GameObject bulletInstance = Instantiate(bullet, transform.position, Quaternion.identity);
-
+       
         // Get BulletScript component and set its properties
         var bulletScript = bulletInstance.GetComponent<BulletScript>();
         if (bulletScript != null)
         {
-            bulletScript.range = range;
-            bulletScript.speed = speed;
+            bulletScript.range = 100;
+            bulletScript.speed = bulletSpeed;
             bulletScript.damage = damage;
-            bulletScript.lifetime = lifetime;
+            bulletScript.lifetime = 10;
             bulletScript.direction = dir;
             bulletScript.OnTriggerEnter += OnBulletTriggerEnter;
         }
@@ -47,7 +52,7 @@ public class EnemyRange : EnemyBase
         {
             DoDamage(damage);
         }
-        else if (other.CompareTag("Wall"))
+        else if (doesRichochet)
         {
             // Use collision normal from BulletScript if available, otherwise default to Vector2.right
             Vector2 normal = Vector2.right;
@@ -58,10 +63,10 @@ public class EnemyRange : EnemyBase
             var newBulletScript = newBulletInstance.GetComponent<BulletScript>();
             if (newBulletScript != null)
             {
-                newBulletScript.range = range;
-                newBulletScript.speed = speed;
+                newBulletScript.range = 100;
+                newBulletScript.speed = bulletSpeed;
                 newBulletScript.damage = damage;
-                newBulletScript.lifetime = lifetime;
+                newBulletScript.lifetime = 10;
                 newBulletScript.direction = reflectedDir;
                 newBulletScript.OnTriggerEnter += OnBulletTriggerEnter;
             }

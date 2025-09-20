@@ -7,10 +7,13 @@ public class EnemyMelee : EnemyBase
     new void Start()
     {
         base.Start();
+        OnDeath += () => StopAllCoroutines();
     }
 
-    void AttackPlayer()
+    protected override void AttackPlayer()
     {
+        rb.velocity = Vector2.zero;
+        isStunned = true;
         isAttacking = true;
         StartCoroutine(StartAttack());
     }
@@ -19,10 +22,11 @@ public class EnemyMelee : EnemyBase
     {
         yield return new WaitForSeconds(0.5f);
         Vector2 dir = ((Vector2)(player.transform.position - transform.position)).normalized;
-        rb.AddForce(dir * 100f, ForceMode2D.Impulse);
+        rb.AddForce(dir * 20f, ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.2f);
         float angle = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x) * Mathf.Rad2Deg;
-        var hits = Physics2D.OverlapBoxAll(transform.position, new Vector2(range, range), angle);
+        var hits = Physics2D.OverlapBoxAll(transform.position, new Vector2(attackRange, attackRange), angle);
+        Debug.DrawLine(transform.position, transform.position + (Vector3)(dir * attackRange), Color.red, 1f);
         foreach (Collider2D hit in hits)
         {
             if (hit.CompareTag("Player"))
@@ -30,6 +34,7 @@ public class EnemyMelee : EnemyBase
                 DoDamage(damage);
             }
         }
+        isStunned = false;
         isAttacking = false;
     }
 }
