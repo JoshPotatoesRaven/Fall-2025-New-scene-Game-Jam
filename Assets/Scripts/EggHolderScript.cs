@@ -14,6 +14,9 @@ public class EggHolderScript : MonoBehaviour
     [Header("References")]
     public GameObject itemPrefab;               // prefab to instantiate when pickup happens
 
+    [Header("Pickup Cooldown")]
+    public float pickupCooldown = 1f;   // seconds before you can add again
+    private bool canPickup = true;
     private List<Vector3> positionHistory = new List<Vector3>();
     private List<Transform> followers = new List<Transform>();
     private float recordTimer = 0f;
@@ -71,10 +74,24 @@ public class EggHolderScript : MonoBehaviour
             if (lastFollower != null)
                 Destroy(lastFollower.gameObject);
         }
+
+        // Start cooldown
+        StartCoroutine(PickupCooldownRoutine());
     }
 
+    private System.Collections.IEnumerator PickupCooldownRoutine()
+    {
+        canPickup = false;
+        yield return new WaitForSeconds(pickupCooldown);
+        canPickup = true;
+    }
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!canPickup)
+        {
+            return;
+        }
+        
         if (collision.collider.CompareTag("Egg"))
         {
             // Add a new follower
