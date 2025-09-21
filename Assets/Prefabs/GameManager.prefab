@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85fa257b6976e347af9ffc9897e2d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 60
-  currentHealth: 60
+  maxHealth: 120
+  currentHealth: 120
   healthBar: {fileID: 0}
   lastCheckpoint: {fileID: 0}
   levelManager: {fileID: 1814125412845886844}

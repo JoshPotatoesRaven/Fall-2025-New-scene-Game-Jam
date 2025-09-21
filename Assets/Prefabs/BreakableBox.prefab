@@ -545,7 +545,7 @@ MonoBehaviour:
   box: {fileID: 4973667937694910624}
   animationStateName: YolkWallBreak
   damagedHealthValue: 1000
-  damagedIndex: 0
+  damagedIndex: -1
   breakTextIndex: 0
   isHealingWall: 1
 --- !u!61 &4320865421379034040

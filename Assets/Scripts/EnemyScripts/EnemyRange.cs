@@ -19,7 +19,6 @@ public class EnemyRange : EnemyBase
         {
             Instantiate(SpawnEgg, transform.position + new Vector3(Random.Range(-3,3), Random.Range(-3, 3), Random.Range(-3, 3)), Quaternion.identity);
         };
-        detectRange = 40;
     }
 
     protected override void AttackPlayer()

@@ -463,7 +463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 635adcbfbd0971643a14deec9d4ba102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trailLength: 3
+  trailLength: 20
   recordInterval: 0.1
   followSpeed: 10
   spacing: 2

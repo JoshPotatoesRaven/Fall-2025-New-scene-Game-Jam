@@ -34,6 +34,11 @@ public class HealthManager : MonoBehaviour
         {
             RestartLevel();
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RestartLevel();
+        }
     }
 
 

@@ -16,6 +16,8 @@ public class EnemyBase : MonoBehaviour
 
     [Header("Stats")]
     public int detectRange;
+
+    public float chaseRange = 15;
     public int attackRange;
     public int health;
     public int damage;
@@ -53,7 +55,7 @@ public class EnemyBase : MonoBehaviour
                 _nextAttackTime = Time.time + attackCooldown;
             }
         }
-        else
+        else if (Vector2.Distance(player.transform.position, transform.position) < chaseRange)
         {
             ChasePlayer();
         }
