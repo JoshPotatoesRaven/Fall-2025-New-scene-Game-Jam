@@ -70,10 +70,17 @@ public class EnemyBase : MonoBehaviour
         if (player == null || isAttacking) return false;
         Vector2 dir = ((Vector2)(player.transform.position - transform.position)).normalized;
         int layerMask = LayerMask.GetMask("Default", "Player");
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, detectRange, layerMask);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, dir, detectRange, layerMask);
 
-        //Debug.Log(hit.collider);
-        return hit.collider != null && hit.collider.CompareTag("Player");
+        foreach (var hit in hits)
+        {
+            if (hit.collider == null) continue;
+            if (hit.collider.gameObject == gameObject) continue; // Ignore self
+            Debug.Log(hit.collider);
+            if (hit.collider.CompareTag("Player"))
+                return true;
+        }
+        return false;
     }
 
     private void ChasePlayer()
