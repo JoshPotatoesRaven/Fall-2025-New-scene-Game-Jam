@@ -48,7 +48,7 @@ public class EggScript : MonoBehaviour
         //{
             
             GameObject otherObject = collision.collider.gameObject;
-            if (otherObject.CompareTag("Wall"))
+            if (otherObject.CompareTag("Wall") || otherObject.CompareTag("Egg"))
             {
                 //Break egg
                 //Destroy(gameObject);

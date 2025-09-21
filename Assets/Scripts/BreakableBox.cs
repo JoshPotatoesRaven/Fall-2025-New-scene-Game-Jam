@@ -23,9 +23,13 @@ public class BreakableBox : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = box.GetComponent<Animator>();
-        animator.Play(animationStateName, 0, 0f);
-        animator.speed = 0f;
+        if (animationStateName != "")
+        {
+            animator = box.GetComponent<Animator>();
+            animator.Play(animationStateName, 0, 0f);
+            animator.speed = 0f;
+        }
+
         breakText = transform.GetChild(breakTextIndex).gameObject;
 
         gameManager = GameObject.FindGameObjectWithTag("GameController");
@@ -74,7 +78,13 @@ public class BreakableBox : MonoBehaviour
         //Break self and show text.
         BoxCollider2D selfCollider = gameObject.GetComponent<BoxCollider2D>();
         selfCollider.enabled = false;
-        animator.speed = 1f;
+        
+        if (animationStateName != "")
+        {
+            animator.speed = 1f;
+        }
+
+
         breakText.SetActive(true);
 
         //Heal to full when breaking a box

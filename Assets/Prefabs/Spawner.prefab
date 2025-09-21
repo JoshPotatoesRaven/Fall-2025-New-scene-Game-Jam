@@ -260,6 +260,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dd43b492e2ad6445be158c19ea01b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startTime: 5
+  spawnTimer: 10
+  spawnEntity: {fileID: 8886965391235787532, guid: b9033358c21a696468a0fd82135fd883, type: 3}
 --- !u!1 &9035793765475140284
 GameObject:
   m_ObjectHideFlags: 0
