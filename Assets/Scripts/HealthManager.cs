@@ -29,19 +29,14 @@ public class HealthManager : MonoBehaviour
         currentHealth -= Time.deltaTime;
         if (currentHealth < 5)
         {
-            Debug.Log("You died");
+            RestartLevel();
         }
     }
 
 
     void RestartLevel()
     {
-        if (lastCheckpoint == null) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-        else {
-            //Move to last checkpoint
-        }
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 }
