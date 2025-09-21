@@ -186,10 +186,10 @@ MonoBehaviour:
   detectRange: 20
   attackRange: 30
   health: 2
-  damage: 2
+  damage: 1
   points: 0
   speed: 1
-  attackCooldown: 1
+  attackCooldown: 3
   bullet: {fileID: 7618794611934812041, guid: e82fd3f25e4feb24d9fcbf326ac3244d, type: 3}
   lifetime: 2
   bulletSpeed: 20

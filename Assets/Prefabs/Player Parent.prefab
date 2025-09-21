@@ -133,8 +133,8 @@ Transform:
   m_GameObject: {fileID: 2522868107677170662}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.05, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 1.5}
+  m_LocalPosition: {x: -0, y: 1, z: 0}
+  m_LocalScale: {x: 12, y: 12, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2500419960770410364}
@@ -483,7 +483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trailingItems: {fileID: 7140400359341035492}
   projectilePrefab: {fileID: 5469977317411935923, guid: 0ae8f731ab4f86146b5135af3793c0a0, type: 3}
-  shootForce: 7.5
+  shootForce: 10
 --- !u!114 &4551924577334353052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,4 +582,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 1}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.5

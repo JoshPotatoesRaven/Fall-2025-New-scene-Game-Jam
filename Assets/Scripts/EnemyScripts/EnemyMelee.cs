@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class EnemyMelee : EnemyBase
 {
+    public float attackForce = 10;
     new void Start()
     {
         base.Start();
@@ -22,7 +23,7 @@ public class EnemyMelee : EnemyBase
     {
         yield return new WaitForSeconds(0.5f);
         Vector2 dir = ((Vector2)(player.transform.position - transform.position)).normalized;
-        rb.AddForce(dir * 20f, ForceMode2D.Impulse);
+        rb.AddForce(dir * attackForce, ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.2f);
         float angle = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x) * Mathf.Rad2Deg;
         var hits = Physics2D.OverlapBoxAll(transform.position, new Vector2(attackRange, attackRange), angle);

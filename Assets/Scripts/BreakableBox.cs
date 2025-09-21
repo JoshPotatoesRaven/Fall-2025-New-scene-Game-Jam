@@ -16,6 +16,9 @@ public class BreakableBox : MonoBehaviour
     public int breakTextIndex;
     GameObject breakText;
 
+    public event Action BreakEvent;
+
+
     public bool isHealingWall = true;
 
     GameObject gameManager;
@@ -30,7 +33,6 @@ public class BreakableBox : MonoBehaviour
             animator.speed = 0f;
         }
 
-        breakText = transform.GetChild(breakTextIndex).gameObject;
 
         gameManager = GameObject.FindGameObjectWithTag("GameController");
         healthManager = gameManager.GetComponent<HealthManager>();
@@ -63,7 +65,11 @@ public class BreakableBox : MonoBehaviour
         if (health == damagedHealthValue)
         {
             transform.GetChild(0).gameObject.SetActive(false);
-            transform.GetChild(damagedIndex).gameObject.SetActive(true);
+            if (damagedIndex != -1)
+            {
+                transform.GetChild(damagedIndex).gameObject.SetActive(true);    
+            }
+            
         }
 
         if (health <= 0)
@@ -78,12 +84,13 @@ public class BreakableBox : MonoBehaviour
         //Break self and show text.
         BoxCollider2D selfCollider = gameObject.GetComponent<BoxCollider2D>();
         selfCollider.enabled = false;
-        
+
         if (animationStateName != "")
         {
             animator.speed = 1f;
         }
 
+        breakText = transform.GetChild(breakTextIndex).gameObject;
 
         breakText.SetActive(true);
 
@@ -92,7 +99,7 @@ public class BreakableBox : MonoBehaviour
         {
             healthManager.currentHealth = healthManager.maxHealth;
         }
-        
-        
+
+        BreakEvent?.Invoke();
     }
 }

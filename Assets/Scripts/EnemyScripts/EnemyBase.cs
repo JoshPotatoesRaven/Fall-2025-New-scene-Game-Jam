@@ -76,7 +76,7 @@ public class EnemyBase : MonoBehaviour
         {
             if (hit.collider == null) continue;
             if (hit.collider.gameObject == gameObject) continue; // Ignore self
-            Debug.Log(hit.collider);
+            //Debug.Log(hit.collider);
             if (hit.collider.CompareTag("Player"))
                 return true;
         }
