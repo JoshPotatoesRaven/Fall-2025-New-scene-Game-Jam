@@ -186,7 +186,7 @@ MonoBehaviour:
   detectRange: 10
   chaseRange: 15
   attackRange: 10
-  health: 1
+  health: 2
   damage: 3
   points: 0
   speed: 1

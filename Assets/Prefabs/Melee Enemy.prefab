@@ -78,8 +78,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   SpawnEgg: {fileID: 5560247083288589610, guid: a3fcbe38734d0b649b34ac66561c6ffc, type: 3}
   detectRange: 20
-  chaseRange: 15
-  attackRange: 3
+  chaseRange: 8
+  attackRange: 4
   health: 1
   damage: 3
   points: 0
