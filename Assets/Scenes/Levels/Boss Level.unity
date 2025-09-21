@@ -4649,7 +4649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7236796279301703822, guid: 90967cfb438ed5e41a868b1f47ed96d4, type: 3}
       propertyPath: startTime
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7236796279301703822, guid: 90967cfb438ed5e41a868b1f47ed96d4, type: 3}
       propertyPath: spawnTimer
@@ -5925,7 +5925,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7236796279301703822, guid: 90967cfb438ed5e41a868b1f47ed96d4, type: 3}
       propertyPath: startTime
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7236796279301703822, guid: 90967cfb438ed5e41a868b1f47ed96d4, type: 3}
       propertyPath: spawnTimer
@@ -7100,7 +7100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7236796279301703822, guid: 90967cfb438ed5e41a868b1f47ed96d4, type: 3}
       propertyPath: startTime
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7236796279301703822, guid: 90967cfb438ed5e41a868b1f47ed96d4, type: 3}
       propertyPath: spawnTimer
