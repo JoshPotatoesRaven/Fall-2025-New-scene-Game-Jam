@@ -7,11 +7,18 @@ public class ShootFollowerScript : MonoBehaviour
 {
     public EggHolderScript trailingItems;         // reference to your trail script
     public GameObject projectilePrefab;         // prefab to instantiate
+    EnableActions enableActions;
+
     public float shootForce = 10f;              // how fast the projectile launches
 
+    void Start()
+    {
+        enableActions = GetComponent<EnableActions>();
+
+    }
     void Update()
     {
-        if (Input.GetMouseButtonDown(1)) // Right click
+        if (Input.GetMouseButtonDown(1) && enableActions.actionsEnabled) // Right click
         {
             ShootFollower();
         }

@@ -7,6 +7,7 @@ public class EggScript : MonoBehaviour
 {
     public float collisionSpeedThreshold = 3.0f;
 
+    public float activeSpeedThreshold = 1.0f;
     public int bounceCount = 0;
     Rigidbody2D rb;
     void Awake()
@@ -16,6 +17,15 @@ public class EggScript : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        if (rb.velocity.magnitude < activeSpeedThreshold)
+        {
+            bounceCount = 0;
+            transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(1).gameObject.SetActive(false);
+        }
+    }
     public void EndSpawnAnimation()
     {
         rb.constraints = RigidbodyConstraints2D.None;

@@ -10,6 +10,10 @@ public class EnemyBase : MonoBehaviour
 
     public GameObject SpawnEgg;
 
+    GameObject gameManager;
+
+    HealthManager healthManager;
+
     [Header("Stats")]
     public int detectRange;
     public int attackRange;
@@ -30,6 +34,8 @@ public class EnemyBase : MonoBehaviour
     protected void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        gameManager = GameObject.FindGameObjectWithTag("GameController");
+        healthManager = gameManager.GetComponent<HealthManager>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -66,7 +72,7 @@ public class EnemyBase : MonoBehaviour
         int layerMask = LayerMask.GetMask("Default", "Player");
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, detectRange, layerMask);
 
-        Debug.Log(hit.collider);
+        //Debug.Log(hit.collider);
         return hit.collider != null && hit.collider.CompareTag("Player");
     }
 
@@ -80,6 +86,7 @@ public class EnemyBase : MonoBehaviour
 
     }
 
+    /*
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Make sure attack hitbox has this tag
@@ -88,6 +95,7 @@ public class EnemyBase : MonoBehaviour
             TakeDamage(1);
         }
     }
+    */
 
     protected virtual void AttackPlayer()
     {
@@ -106,7 +114,8 @@ public class EnemyBase : MonoBehaviour
 
     public void DoDamage(int damage)
     {
-        //player.GetComponent<Player>().TakeDamage(damage);
+        healthManager.currentHealth -= damage;
+        Debug.Log(String.Format("Dealt {0} damage", damage));
     }
 
     protected void FlashRed()
@@ -134,7 +143,11 @@ public class EnemyBase : MonoBehaviour
         GameObject otherObject = collision.collider.gameObject;
         if (otherObject.CompareTag("Egg"))
         {
-            TakeDamage(1);
+            EggScript eggScript = otherObject.GetComponent<EggScript>();
+            if (eggScript.bounceCount >= 1)
+            {
+                TakeDamage(1);
+            }
         }
         
     }

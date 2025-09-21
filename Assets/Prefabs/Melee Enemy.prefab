@@ -77,10 +77,10 @@ MonoBehaviour:
   player: {fileID: 0}
   rb: {fileID: 0}
   SpawnEgg: {fileID: 5560247083288589610, guid: a3fcbe38734d0b649b34ac66561c6ffc, type: 3}
-  detectRange: 8
-  attackRange: 4
-  health: 3
-  damage: 1
+  detectRange: 20
+  attackRange: 20
+  health: 1
+  damage: 2
   points: 0
   speed: 1
   attackCooldown: 1
@@ -145,13 +145,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5259918786601699768}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.11, y: 0.1, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6964979437766688431}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!95 &4356520561054047562
 Animator:
   serializedVersion: 5

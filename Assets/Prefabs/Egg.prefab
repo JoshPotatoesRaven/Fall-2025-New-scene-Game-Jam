@@ -133,7 +133,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.5
-  m_LinearDrag: 0.3
+  m_LinearDrag: 0.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 798761d1d5f567347968df73904a0335, type: 2}
@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisionSpeedThreshold: 3
+  activeSpeedThreshold: 2
   bounceCount: 0
 --- !u!1 &8222215601590284554
 GameObject:

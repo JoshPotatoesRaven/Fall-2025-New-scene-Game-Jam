@@ -280,7 +280,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 2377680799308269468}
   m_Layer: 0
   m_Name: Player Parent
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -378,6 +378,7 @@ GameObject:
   - component: {fileID: 3089423894344329959}
   - component: {fileID: 7140400359341035492}
   - component: {fileID: 2476335671579682717}
+  - component: {fileID: 4551924577334353052}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -483,6 +484,19 @@ MonoBehaviour:
   trailingItems: {fileID: 7140400359341035492}
   projectilePrefab: {fileID: 5469977317411935923, guid: 0ae8f731ab4f86146b5135af3793c0a0, type: 3}
   shootForce: 7.5
+--- !u!114 &4551924577334353052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4503315301480290490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdfef0e38c9c9414496dfdfc9687421e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionsEnabled: 1
 --- !u!1 &4803180912082914651
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,7 +524,7 @@ Transform:
   m_GameObject: {fileID: 4803180912082914651}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -566,6 +580,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1}
   serializedVersion: 2
   m_Radius: 1
