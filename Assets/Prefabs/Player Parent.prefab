@@ -134,8 +134,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0.05, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 6, y: 6, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2500419960770410364}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -201,7 +201,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -166788240, guid: c61f9bd7f63498846ba509b718062d5b, type: 3}
+  m_Sprite: {fileID: -826162041, guid: c61f9bd7f63498846ba509b718062d5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -394,7 +394,7 @@ Transform:
   m_GameObject: {fileID: 4503315301480290490}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -482,7 +482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trailingItems: {fileID: 7140400359341035492}
   projectilePrefab: {fileID: 5469977317411935923, guid: 0ae8f731ab4f86146b5135af3793c0a0, type: 3}
-  shootForce: 10
+  shootForce: 7.5
 --- !u!1 &4803180912082914651
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +532,7 @@ MonoBehaviour:
   hitboxActiveTime: 0.2
   cooldownTotalTime: 0.5
   timer: 0
-  knockbackForce: 250
+  knockbackForce: 10
   ready: 0
 --- !u!58 &3846930997853025606
 CircleCollider2D:

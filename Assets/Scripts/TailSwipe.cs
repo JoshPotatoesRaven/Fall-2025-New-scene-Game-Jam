@@ -11,6 +11,7 @@ public class TailSwipe : MonoBehaviour
 
     GameObject graphics;
 
+    EnableActions enableActions;
     public float hitboxActiveTime = 0.2f;
 
     public float cooldownTotalTime = 0.5f;
@@ -26,12 +27,14 @@ public class TailSwipe : MonoBehaviour
     {
         hitbox = GetComponent<CircleCollider2D>();
         graphics = transform.GetChild(0).gameObject;
+        graphics.SetActive(false);
+        enableActions = transform.parent.gameObject.GetComponent<EnableActions>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && timer <= 0)
+        if (Input.GetMouseButtonDown(0) && timer <= 0 && enableActions.actionsEnabled)
         {
             hitbox.enabled = true;
             graphics.SetActive(true);
@@ -56,10 +59,13 @@ public class TailSwipe : MonoBehaviour
         {
             //Apply force and end attack
             hitbox.enabled = false;
+            EggScript eggScript = collision.gameObject.GetComponent<EggScript>();
+            eggScript.AddBounceCount();
 
             Rigidbody2D eggRb = collision.gameObject.GetComponent<Rigidbody2D>();
+            
             Vector2 forceDir = (collision.transform.position - transform.position).normalized;
-            eggRb.AddForce(forceDir * knockbackForce);
+            eggRb.AddForce(forceDir * knockbackForce, ForceMode2D.Impulse);
         }
     }
 }

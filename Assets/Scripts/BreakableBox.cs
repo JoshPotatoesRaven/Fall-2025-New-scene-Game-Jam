@@ -31,12 +31,17 @@ public class BreakableBox : MonoBehaviour
             GameObject otherObject = collision.collider.gameObject;
             if (otherObject.CompareTag("Egg"))
             {
-                Destroy(otherObject);
+                EggScript eggScript = otherObject.GetComponent<EggScript>();
+                if (eggScript.bounceCount >= 1)
+                {
+                    Destroy(otherObject);
 
-                health -= 1;
-                if (health <= 0) {
-                    Break();
+                    health -= 1;
+                    if (health <= 0) {
+                        Break();
+                    }
                 }
+
             }
         }
     }

@@ -7,11 +7,13 @@ public class EggScript : MonoBehaviour
 {
     public float collisionSpeedThreshold = 3.0f;
 
+    public int bounceCount = 0;
     Rigidbody2D rb;
     void Awake()
     {
         //Start animation
         rb = GetComponent<Rigidbody2D>();
+
     }
 
     public void EndSpawnAnimation()
@@ -19,18 +21,30 @@ public class EggScript : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.None;
     }
 
-    /*
-    void OnCollisionEnter2D(Collision2D collision)
+    public void AddBounceCount()
     {
-        if (collision.relativeVelocity.magnitude > collisionSpeedThreshold)
+        
+        bounceCount += 1;
+
+        if (bounceCount >= 1)
         {
-            GameObject otherObject = collision.collider.gameObject;
-            if (!otherObject.CompareTag("Player"))
-            {
-                //Break egg
-                Destroy(gameObject);
-            }
+            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.SetActive(true);
         }
     }
-    */
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        //if (collision.relativeVelocity.magnitude > collisionSpeedThreshold)
+        //{
+            
+            GameObject otherObject = collision.collider.gameObject;
+            if (otherObject.CompareTag("Wall"))
+            {
+                //Break egg
+                //Destroy(gameObject);
+                AddBounceCount();
+            }
+        //}
+    }
+    
 }
