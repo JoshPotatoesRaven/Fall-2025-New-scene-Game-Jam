@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6748612859714419741}
   - component: {fileID: 9007446285782733746}
+  - component: {fileID: 1814125412845886844}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -48,3 +49,18 @@ MonoBehaviour:
   currentHealth: 60
   healthBar: {fileID: 0}
   lastCheckpoint: {fileID: 0}
+  levelManager: {fileID: 1814125412845886844}
+--- !u!114 &1814125412845886844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8844042437797765607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1383ddea51a6440438e7d16369aaed6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEndCanvas: {fileID: 0}
+  mainCanvas: {fileID: 0}

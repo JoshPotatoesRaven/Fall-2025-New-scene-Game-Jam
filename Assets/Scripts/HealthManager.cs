@@ -12,12 +12,15 @@ public class HealthManager : MonoBehaviour
 
     public Transform lastCheckpoint;
 
+    public LevelManager levelManager;
+
     GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player");
+        levelManager = gameObject.GetComponent<LevelManager>();
     }
 
     // Update is called once per frame
@@ -36,7 +39,6 @@ public class HealthManager : MonoBehaviour
 
     void RestartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+        levelManager.GameEnd();
     }
 }

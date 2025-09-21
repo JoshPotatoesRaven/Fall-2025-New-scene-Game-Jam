@@ -76,7 +76,6 @@ public class EnemyBase : MonoBehaviour
         {
             if (hit.collider == null) continue;
             if (hit.collider.gameObject == gameObject) continue; // Ignore self
-            Debug.Log(hit.collider);
             if (hit.collider.CompareTag("Player"))
                 return true;
         }
@@ -137,13 +136,12 @@ public class EnemyBase : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         sr.color = originalColor;
     }
-    public void Die()
+    public virtual void Die()
     {
         Instantiate(SpawnEgg, transform.position, Quaternion.identity);
         Destroy(gameObject);
         OnDeath?.Invoke();
     }
-    
     void OnCollisionEnter2D(Collision2D collision)
     {
 
