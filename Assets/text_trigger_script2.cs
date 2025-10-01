@@ -8,16 +8,20 @@ public class text_trigger_script2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        /*if(TextBox != null)
+        {
+            TextBox.SetActive(false);
+        }*/
+        
     }
 
-    // Update is called once per frame
-    void Update()
+   
+    private void OnTriggerEnter2D(Collider2D other)
     {
-
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        TextBox.SetActive(true);
+        if(other.CompareTag("Player") && TextBox != null)
+        {
+            TextBox.SetActive(true);
+        }
+        
     }
 }

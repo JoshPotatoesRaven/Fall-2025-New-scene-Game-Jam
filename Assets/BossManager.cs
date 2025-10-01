@@ -9,6 +9,7 @@ public class BossManager : MonoBehaviour
     BreakableBox breakableBox1;
     public GameObject tumor2;
     BreakableBox breakableBox2;
+    public GameObject Congratulations;
 
 
     public BreakableBox bossBreakableBox;
@@ -30,6 +31,7 @@ public class BossManager : MonoBehaviour
 
     void OpenWin()
     {
+        //Congratulations.SetActive(true);
         EndDoor.SetActive(false);
     }
 
