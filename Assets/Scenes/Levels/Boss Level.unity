@@ -565,7 +565,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Purple clutters are enemy spawners. You cannot attack the boss \nuntil
-    you eliminate both beacons (four eggs) on the left and right."
+    you eliminate both tumors (four eggs) on the left and right."
 --- !u!222 &165656281
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2744,9 +2744,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5109128074178548064, guid: 2f3c4ee4d23c199439946db9036ed247, type: 3}
       insertIndex: 1
       addedObject: {fileID: 1993650294}
-    - targetCorrespondingSourceObject: {fileID: 5109128074178548064, guid: 2f3c4ee4d23c199439946db9036ed247, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 1378482443}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f3c4ee4d23c199439946db9036ed247, type: 3}
 --- !u!114 &652222069 stripped
@@ -4638,115 +4635,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4086353745988240201, guid: 36c4ba6b80f27f245b0cc0840161621e, type: 3}
   m_PrefabInstance: {fileID: 174895830}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1378482442
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1378482443}
-  - component: {fileID: 1378482447}
-  - component: {fileID: 1378482446}
-  - component: {fileID: 1378482445}
-  - component: {fileID: 1378482444}
-  m_Layer: 5
-  m_Name: Congratulations
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1378482443
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378482442}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 652222070}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 102, y: -250}
-  m_SizeDelta: {x: 750, y: 500}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1378482444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378482442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94330bb8bbdda413fa77d3bfd8597ed6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!111 &1378482445
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378482442}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: a9ab7e3efcbce4b9baf39158e95178f8, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: a9ab7e3efcbce4b9baf39158e95178f8, type: 2}
-  m_WrapMode: 1
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 1
-  m_CullingType: 0
---- !u!114 &1378482446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378482442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.03773582, g: 0.037491072, b: 0.03577783, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 5da00ad9113d8104da92e36403a625dd, type: 3}
-    m_FontSize: 45
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 45
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "Boss' shield disabled! Finish him \n             off to beat the level"
---- !u!222 &1378482447
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378482442}
-  m_CullTransparentMesh: 1
 --- !u!1001 &1451146941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5137,6 +5025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tumor1: {fileID: 2831886496082714215}
   tumor2: {fileID: 1472165297}
+  Congratulations: {fileID: 0}
   bossBreakableBox: {fileID: 1730341582077543924}
   EndDoor: {fileID: 276588830}
   shield: {fileID: 1529978714}
@@ -6776,7 +6665,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Boss' shield disabled! Finish him \n             off to beat the level"
+  m_Text: Congratulations! You Beat the Boss level
 --- !u!222 &1993650297
 CanvasRenderer:
   m_ObjectHideFlags: 0

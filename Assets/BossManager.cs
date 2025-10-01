@@ -31,7 +31,7 @@ public class BossManager : MonoBehaviour
 
     void OpenWin()
     {
-        //Congratulations.SetActive(true);
+        
         EndDoor.SetActive(false);
     }
 

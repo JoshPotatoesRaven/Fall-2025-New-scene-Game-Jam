@@ -8,9 +8,10 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
 
     public float speed = 1;
+    public bool canMove = true;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = transform.parent.GetComponent<Rigidbody2D>();
     }
@@ -26,7 +27,10 @@ public class PlayerMovement : MonoBehaviour
 
         // set vector of transform directly
         transform.up = direction;
-
-        rb.velocity = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0).normalized * speed * Time.deltaTime * 50;
+        if(gameObject != null && canMove)
+        {
+            rb.velocity = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0).normalized * speed * Time.deltaTime * 50;
+        }
+        
     }
 }
